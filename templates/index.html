@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CSV File</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.prim{
+  color: orange;
+}
+.sam{
+  font-size: small;
+}
+
+html {
+  width: 100%;
+  height:100%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div >   
+        <form action="save" onsubmit="uploaddoc()"  method="POST">
+            {%csrf_token%}
+        Document:<input type="file"  id="files"><br>
+        <input type="hidden" name="url" value="empty" id="url">
+        <button type="submit">upload</button>
+    </form>
+
+
+</body>
+<script>
+     function uploaddoc(){
+        var fullpath =document.getElementById("files").value;
+        
+        document.getElementById("url").value = fullpath.substring(12);
+                 
+    }
+</script>
+</html>
